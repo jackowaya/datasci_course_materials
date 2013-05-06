@@ -36,8 +36,9 @@ def handle_tweets(tweet_fp, sentiment):
         for w in tweet_words:
             # Remove trailing punctuation
             w = w.lstrip(PUNCTUATION_TO_TRIM).rstrip(PUNCTUATION_TO_TRIM)
-            total += sentiment[w]
-            all_words.add(w)
+            if w != "":
+                total += sentiment[w]
+                all_words.add(w)
             
         if total != 0.0:
             # We have a sentiment score for this tweet, register this as a sentiment observation for each word 

@@ -22,8 +22,9 @@ def handle_tweets(tweet_fp):
         for w in tweet_words:
             # Remove leading and trailing punctuation
             w = w.lstrip(PUNCTUATION_TO_TRIM).rstrip(PUNCTUATION_TO_TRIM)
-            total_words += 1
-            word_count[w] += 1
+            if w != "":
+                total_words += 1
+                word_count[w] += 1
 
     # Ok, we've gone through all the tweets. Get each word frequency and print it
     for w, c in word_count.iteritems():
