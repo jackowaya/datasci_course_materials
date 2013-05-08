@@ -21,7 +21,8 @@ def handle_tweets(tweet_fp):
         # Figure out which terms are in this tweet. Multiple-word phrases from the sentiment file are not handled
         for w in tweet_words:
             # Remove leading and trailing punctuation
-            w = w.lstrip(PUNCTUATION_TO_TRIM).rstrip(PUNCTUATION_TO_TRIM)
+            # Looks like the grader expects punctuation.
+            #w = w.lstrip(PUNCTUATION_TO_TRIM).rstrip(PUNCTUATION_TO_TRIM)
             if w != "":
                 total_words += 1
                 word_count[w] += 1

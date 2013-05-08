@@ -15,13 +15,11 @@ def handle_tweets(tweet_fp):
             hashtag_counts[t["text"]] += 1
             
     # Ok, we've gone through all the tweets. Find the best hashtag
-    best_tag = ""
-    best_score = -1
-    for t, c in hashtag_counts.iteritems():
-        if c > best_score:
-            best_tag = t
-            best_score = c
-    print ("%s\t%f" % (best_tag, best_score)).encode("utf-8")
+    tups = sorted(hashtag_counts.items(), key= lambda x: x[1], reverse=True)
+
+    for i in range(10):
+        if len(tups) > i:
+            print ("%s\t%f" % (tups[i][0], tups[i][1])).encode("utf-8")
 
 def main():
     tweet_file = open(sys.argv[1])
